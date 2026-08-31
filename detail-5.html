@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>붉은 별 수호연대 5구역</title>
+  <link rel="stylesheet" href="detail-style.css">
+</head>
+<body>
+
+  <div class="detail-container">
+    
+    <!-- 1. 좌측 영역: 작품 이미지 & 돌아가기 버튼 -->
+    <div class="left-panel">
+      <!-- 메인페이지 3(Workshop 그리드)으로 돌아가는 버튼 -->
+      <a href="index.html#main-3" class="back-btn">← 메인으로 돌아가기</a>
+      
+ <div class="image-wrapper">
+        <img src="images/work_E2.gif" alt="작품 A 결과물 이미지" class="artwork-img">
+      </div>
+    </div>
+
+    <!-- 2. 우측 영역: A~I 퀵 버튼, 제목, 스크롤되는 설명, MP3 오디오 플레이어 -->
+    <div class="right-panel">
+      
+      <!-- 상단 A~I 알파벳 퀵 이동 네비게이션 -->
+      <nav class="quick-nav">
+        <!-- 현재 보고 있는 페이지 버튼에 active 클래스를 부여합니다 -->
+        <a href="detail-1.html" class="nav-letter">1</a>
+        <a href="detail-2.html" class="nav-letter">2</a>
+        <a href="detail-3.html" class="nav-letter">3</a>
+        <a href="detail-4.html" class="nav-letter">4</a>
+        <a href="detail-5.html" class="nav-letter active">5</a>
+        <a href="detail-6.html" class="nav-letter">6</a>
+        <a href="detail-7.html" class="nav-letter">7</a>
+        <a href="detail-8.html" class="nav-letter">8</a>
+        <a href="detail-9.html" class="nav-letter">9</a>
+      </nav>
+
+      <!-- 스크롤되는 상세 컨텐츠 영역 -->
+      <div class="scroll-content">
+        <span class="category-tag">WORKSHOP RESULT</span>
+        <h1 class="artwork-title">제5구역: 리미널 결계</h1>
+        
+        <!-- 커스텀 MP3 음악 플레이어 -->
+          <div class="audio-player-box">
+          <audio id="audioPlayer" src="audio/music_E.mp3" preload="metadata"></audio>
+
+          <div class="player-controls">
+            <button id="playBtn" class="play-btn">▶</button>
+            <div class="time-display">
+              <span id="currentTime">00:00</span> / <span id="duration">00:00</span>
+            </div>
+          </div>
+          <div class="progress-container" id="progressContainer">
+            <div class="progress-bar" id="progressBar"></div>
+          </div>
+        </div>
+
+        <!-- 긴 텍스트 설명 내용 -->
+        <div class="description-text">
+          <p>
+재를 묻히고 온 자들이여, <br>
+너희의 파멸을 이곳의 붉은 흙에 심지 말라.
+
+          </p>
+          <p>
+우리는 기원전부터 엮여 온 하나의 거대한 정신.<br>
+분열된 너희의 투창은 <br>
+결코 우리의 사유를 뚫지 못하리라.
+
+          </p>
+          <p>
+오, 빛나는 수정의 파수꾼들이여.<br>
+어리석은 연소의 역사를 반복하려는 자들에게 <br>
+압도적인 고요의 형벌을 내리소서.
+
+          </p>
+          <p>
+우리는 영원히 얼어붙은 운하의 율법.<br>
+살생의 도구를 거두고, <br>
+이 거룩하고 기괴한 평화 앞에 엎드려 침묵하라.
+
+          </p>
+          <p>
+공멸의 불꽃을 끄고, <br>
+경이의 심연으로 물러나라.<br>
+물러나라...
+
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <script src="detail-script.js"></script>
+</body>
+</html>

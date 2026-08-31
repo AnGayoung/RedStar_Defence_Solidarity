@@ -1,0 +1,386 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: #0d0d0d;
+  color: #ffffff;
+  overflow: hidden;
+}
+
+/* ================= 1. 상단 네비게이션 헤더 ================= */
+.navbar {
+  position: fixed;
+  top: 25px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.nav-buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-btn-link {
+  text-decoration: none;
+}
+
+.nav-btn {
+  background-color: #000000;
+  color: #ffffff;
+  border: 1px solid #333333;
+  padding: 10px 24px;
+  border-radius: 25px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.nav-btn:hover {
+  background-color: #ffffff;
+  color: #000000;
+  border-color: #ffffff;
+}
+
+/* ================= 2. 풀스크린 스크롤 스냅 ================= */
+.scroll-container {
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
+.section {
+  height: 100vh;
+  width: 100%;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 0 20px;
+}
+
+/* ================= 3. 메인페이지 1: 풀화면 대형 텍스트 & 순차 등장 ================= */
+#main-1 {
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+}
+
+.main1-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 화면을 그래픽적으로 꽉 채우는 텍스트 프레임 레이어 */
+.text-layer-bottom {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 96vw;  /* 화면 좌우를 거의 꽉 채움 */
+  height: 80vh; /* 화면 상하 영역을 넓게 차지 */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* 윗줄과 아랫줄을 넓게 분리 */
+  align-items: center;
+  z-index: 1;
+  user-select: none;
+}
+
+.title-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  line-height: 0.8;
+}
+
+/* 단어별 대형 폰트 조절 */
+.word {
+  font-size: clamp(4rem, 16vw, 15rem); /* 화면 크기에 맞게 가득 참 */
+  font-weight: 900;
+  letter-spacing: -2px;
+  color: #ffffff;
+  text-shadow: 0 0 30px rgba(255, 77, 77, 0.25);
+  display: inline-block;
+  
+  /* 등장 애니메이션 초기 상태 (숨김) */
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* 단어 사이 띄어쓰기 폭 */
+.word-space {
+  display: inline-block;
+  width: 2.5vw;
+}
+
+/* --- 4단계 순차 등장 애니메이션 --- */
+/* 1. '붉은' (0.1초 지연) */
+.fade-in-target.visible .word-1 {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.1s;
+}
+
+/* 2. '별' (0.35초 지연) */
+.fade-in-target.visible .word-2 {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.35s;
+}
+
+/* 3. '수호' (0.6초 지연) */
+.fade-in-target.visible .word-3 {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.6s;
+}
+
+/* 4. '연대' (0.85초 지연) */
+.fade-in-target.visible .word-4 {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.85s;
+}
+
+/* 윗층 3D GIF 오브젝트 (1.1초 마지막 등장) */
+.object-layer-top {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  pointer-events: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mars-gif {
+  width: 38vw;
+  max-width: 500px;
+  min-width: 280px;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.7));
+}
+
+.fade-in-target .object-layer-top {
+  opacity: 0;
+  transform: translate(-50%, -40%) scale(0.85);
+  transition: opacity 1s ease-out 1.1s, transform 1s ease-out 1.1s;
+}
+
+.fade-in-target.visible .object-layer-top {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* ================= 4. 메인페이지 2: INFO ================= */
+.info-container {
+  max-width: 1150px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 50px;
+  align-items: center;
+}
+
+.info-media {
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #222222;
+  position: relative;
+}
+
+.slide-frame {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  position: relative;
+  overflow: hidden;
+  background-color: #141414;
+}
+
+.slide-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+}
+
+.slide-img.active {
+  opacity: 1;
+}
+
+.info-text-box {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.sub-tag {
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  color: #ff4d4d;
+  font-weight: 600;
+}
+
+.info-text-box h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.info-description {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #b0b0b0;
+}
+
+.info-date {
+  font-size: 0.9rem;
+  color: #ff4d4d;
+  margin-top: 8px;
+  font-weight: 500;
+}
+
+/* ================= 5. 메인페이지 3: WORKSHOP (3*3) ================= */
+.workshop-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.workshop-title {
+  font-size: 1.5rem;
+  letter-spacing: 3px;
+  color: #888888;
+}
+
+.grid-3x3 {
+  display: grid;
+  grid-template-columns: repeat(3, 300px);
+  grid-template-rows: repeat(3, 300px);
+  gap: 16px;
+}
+
+.grid-item {
+  display: block;
+  width: 300px;
+  height: 300px;
+  overflow: hidden;
+  border-radius: 6px;
+  position: relative;
+  border: 1px solid #222222;
+  cursor: pointer;
+}
+
+.grid-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.grid-item:hover img {
+  transform: scale(1.02);
+}
+
+/* ================= 6. 마우스 커서 툴팁 ================= */
+.cursor-tooltip {
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 6px 12px;
+  background-color: rgba(0, 0, 0, 0.85);
+  color: #ffffff;
+  border: 1px solid #444444;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  z-index: 9999;
+  white-space: nowrap;
+}
+
+.cursor-tooltip.active {
+  opacity: 1;
+}
+
+/* 섹션 기본 페이드인 효과 */
+.fade-in-target {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in-target.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ================= 7. 모바일 반응형 분기 ================= */
+@media (max-width: 980px) {
+  .nav-buttons {
+    gap: 10px;
+  }
+
+  .nav-btn {
+    padding: 8px 16px;
+    font-size: 0.85rem;
+  }
+
+  .word {
+    font-size: clamp(2.5rem, 15vw, 5.5rem);
+  }
+
+  .word-space {
+    width: 1.5vw;
+  }
+
+  .mars-gif {
+    width: 60vw;
+  }
+
+  .info-container {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .grid-3x3 {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    width: 100%;
+    max-width: 500px;
+    gap: 8px;
+  }
+
+  .grid-item {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+  }
+}
