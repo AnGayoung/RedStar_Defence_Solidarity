@@ -8,78 +8,128 @@
 </head>
 <body>
 
-  <div class="detail-container">
+<div class="detail-container">
     
-    <!-- 1. 좌측 영역: 작품 이미지 & 돌아가기 버튼 -->
+    <!-- 1. 좌측 영역: 3장 이미지 자동 슬라이더 -->
     <div class="left-panel">
-      <!-- 메인페이지 3(Workshop 그리드)으로 돌아가는 버튼 -->
-      <a href="index.html#main-3" class="back-btn">← 메인으로 돌아가기</a>
-      
- <div class="image-wrapper">
-        <img src="images/work_A2.gif" alt="작품 A 결과물 이미지" class="artwork-img">
+      <div class="image-wrapper">
+        <div class="detail-slide-frame">
+          <img src="images/work_A2.jpg" alt="작품 A 슬라이드 1" class="detail-slide-img active">
+          <img src="images/work_A3.jpg" alt="작품 A 슬라이드 2" class="detail-slide-img">
+          <img src="images/work_A4.jpg" alt="작품 A 슬라이드 3" class="detail-slide-img">
+        </div>
       </div>
     </div>
 
-    <!-- 2. 우측 영역: A~I 퀵 버튼, 제목, 스크롤되는 설명, MP3 오디오 플레이어 -->
+    <!-- 2. 우측 영역: 상단 퀵 네비게이션 + 메인 돌아가기 버튼, 제목, 오디오 플레이어, 탭 컨텐츠 -->
     <div class="right-panel">
       
-      <!-- 상단 A~I 알파벳 퀵 이동 네비게이션 -->
+      <!-- 상단 1~9 네비게이션 & 원형 MAIN 돌아가기 버튼 -->
       <nav class="quick-nav">
-        <!-- 현재 보고 있는 페이지 버튼에 active 클래스를 부여합니다 -->
-        <a href="detail-1.html" class="nav-letter active">1</a>
-        <a href="detail-2.html" class="nav-letter">2</a>
-        <a href="detail-3.html" class="nav-letter">3</a>
-        <a href="detail-4.html" class="nav-letter">4</a>
-        <a href="detail-5.html" class="nav-letter">5</a>
-        <a href="detail-6.html" class="nav-letter">6</a>
-        <a href="detail-7.html" class="nav-letter">7</a>
-        <a href="detail-8.html" class="nav-letter">8</a>
-        <a href="detail-9.html" class="nav-letter">9</a>
+        <a href="index.html#main-3" class="nav-btn-main">← MAIN</a>
+        <div class="nav-letters">
+          <a href="detail-1.html" class="nav-letter active">1</a>
+          <a href="detail-2.html" class="nav-letter">2</a>
+          <a href="detail-3.html" class="nav-letter">3</a>
+          <a href="detail-4.html" class="nav-letter">4</a>
+          <a href="detail-5.html" class="nav-letter">5</a>
+          <a href="detail-6.html" class="nav-letter">6</a>
+          <a href="detail-7.html" class="nav-letter">7</a>
+          <a href="detail-8.html" class="nav-letter">8</a>
+          <a href="detail-9.html" class="nav-letter">9</a>
+        </div>
       </nav>
 
-      <!-- 스크롤되는 상세 컨텐츠 영역 -->
-      <div class="scroll-content">
+      <!-- 작품 서브 태그 & 제목 -->
+      <div class="header-block">
         <span class="category-tag">WORKSHOP RESULT</span>
         <h1 class="artwork-title">제1구역: 푸른산 은폐 전략</h1>
-        
-        <!-- 커스텀 MP3 음악 플레이어 -->
-          <div class="audio-player-box">
-          <audio id="audioPlayer" src="audio/music_A.mp3" preload="metadata"></audio>
 
-          <div class="player-controls">
-            <button id="playBtn" class="play-btn">▶</button>
-            <div class="time-display">
-              <span id="currentTime">00:00</span> / <span id="duration">00:00</span>
-            </div>
+        <!-- 2개 탭 버튼 (전략 회의 보고서를 첫 번째로 순서 변경) -->
+        <div class="tab-menu">
+          <button class="tab-btn active" data-tab="tab-1">전략 회의 보고서</button>
+          <button class="tab-btn" data-tab="tab-2">화성 수호의 노래</button>
+        </div>
+      </div>
+
+      <!-- 공통 오디오 플레이어 -->
+      <div class="audio-player-box">
+        <audio id="audioPlayer" src="audio/music_A.mp3" preload="metadata"></audio>
+        
+        <div class="player-controls">
+          <button id="playBtn" class="play-btn">▶</button>
+          <div class="time-display">
+            <span id="currentTime">00:00</span> / <span id="duration">00:00</span>
           </div>
-          <div class="progress-container" id="progressContainer">
-            <div class="progress-bar" id="progressBar"></div>
+        </div>
+        <div class="progress-container" id="progressContainer">
+          <div class="progress-bar" id="progressBar"></div>
+        </div>
+      </div>
+
+      <!-- 독립 스크롤 텍스트 컨텐츠 영역 -->
+      <div class="scroll-content">
+        
+        <!-- [첫 번째 탭 컨텐츠: 전략 회의 보고서] -->
+        <div id="tab-1" class="tab-content active">
+          <div class="text-block">
+            <h3 class="mid-title">지구인 분석 결과</h3>
+            <p class="description-text">
+              주요 기술을 기반으로 분석한 인간의 약점<br><br>
+              1. VR 시뮬레이션: 낯선 환경에서 인간의 스트레스, 고립감을 관리<br>
+              2. 슈트: 방사선, 온도 조절 등이 가능해, 슈트 소지 유무가 중요할 것으로 예상<br>
+              3. 스마트폰과 같이 타인과 커뮤니케이션 가능한 도구 : 외로움이 인간의 약점<br>
+              4. 데이터에 대한 의존성<br>
+              5. 화성은 지구와 환경 자체가 전혀 다르므로, 인간이 기존 기술에 의존하는 것이 오히려 약점이 됨 (ex. 전기를 어디서 끌고 올 것인가)<br>
+              6. 지구인들의 기본적인 의식주 해결 필요
+            </p>
+            
+            <hr class="section-divider">
+
+            <h3 class="mid-title">화성인으로서의 입장</h3>
+            <p class="description-text">
+              우리 조는 1구역의 지형 조건이 매우 유리하다고 판단했다. 푸른 산은 주변을 내려다볼 수 있는 고지대이고, 은빛 모래 운하는 상류에 위치해 있어 수자원 보호의 가치가 크며, 그 주변에는 화성인 마을까지 자리하고 있다. 따라서, 1구역이 지구인에게 선점당하지 않도록 미리 보호하고 통제해야 한다고 보았다. 또한, 좋은 지형을 화성인 중심으로 적극 활용하고자 한다.
+            </p>
+
+            <hr class="section-divider">
+
+            <h3 class="mid-title">전략명: 푸른산 은폐 전략</h3>
+            <p class="description-text">
+              푸른 산은 주변을 내려다볼 수 있는 고지대이기 때문에 감시 및 경계, 통제의 중심지로 활용될 수 있다. 이를 위해 지구인이 푸른 산과 화성인 마을, 은빛 모래 운하 상류에 함부로 접근하지 못하도록 막는 것을 전략의 목표로 세웠다.<br><br>
+
+              1. 푸른 산에 지구인이 접근하지 못하게 하기 위해 울타리 설치 및 관련 법 제정<br>
+              2. 지구인의 통신 장비와 관측 장비 설치 제한<br>
+              3. 화성인만 아는 산속 통로 및 케이블카 만들기 -> 은밀한 이동 및 통신 제한<br>
+              4. 은빛 모래 운하 상류의 오염 방지
+            </p>
           </div>
         </div>
 
-        <!-- 긴 텍스트 설명 내용 -->
-        <div class="description-text">
-          <p>
-            우리의 화성을 지키자! 푸른산 지켜! 운하 상류 지켜! <br>
-울타리를 세우고 조용히 길을 막아라 <br>
-함부로 넘지 못하게 화성의 법을 세워라 <br>
-통신이 끊긴 산속 길 우리만 아는 비밀 통로<br>
-케이블카를 타고 가 마을을 이어 지켜내
+        <!-- [두 번째 탭 컨텐츠: 화성 수호의 노래] -->
+        <div id="tab-2" class="tab-content">
+          <div class="text-block">
+            <h3 class="mid-title">곡 제목: 푸른산을 지켜라</h3>
+            <p class="lyrics-text">
+              우리의 화성을 지키자! 푸른산 지켜! 운하 상류 지켜!<br>
+              울타리를 세우고 조용히 길을 막아라<br>
+              함부로 넘지 못하게 화성의 법을 세워라<br>
+              통신이 끊긴 산속 길 우리만 아는 비밀 통로<br>
+              케이블카를 타고 가 마을을 이어 지켜내<br><br>
 
-          <p>
-우리의 화성을 지키자! 푸른산 지켜! 운하 상류 지켜!<br>
-우린 싸우려는 게 아니야 빼앗기지 않으려는 거야<br>
-함께 살 수는 있어도 우리 땅을 넘길 순 없어<br>
-우리의 화성을 지키자! 푸른산 지켜! 운하 상류 지켜! 
-          </p>
+              우리의 화성을 지키자! 푸른산 지켜! 운하 상류 지켜!<br>
+              우린 싸우려는 게 아니야 빼앗기지 않으려는 거야<br>
+              함께 살 수는 있어도 우리 땅을 넘길 순 없어<br>
+              우리의 화성을 지키자! 푸른산 지켜! 운하 상류 지켜!
+            </p>
+          </div>
         </div>
 
       </div>
 
     </div>
 
-  </div>
+</div>
 
-  <script src="detail-script.js"></script>
+<script src="detail-script.js"></script>
 </body>
 </html>

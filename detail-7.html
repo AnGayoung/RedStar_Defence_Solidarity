@@ -8,59 +8,113 @@
 </head>
 <body>
 
-  <div class="detail-container">
+<div class="detail-container">
     
-    <!-- 1. 좌측 영역: 작품 이미지 & 돌아가기 버튼 -->
+    <!-- 1. 좌측 영역: 3장 이미지 자동 슬라이더 -->
     <div class="left-panel">
-      <!-- 메인페이지 3(Workshop 그리드)으로 돌아가는 버튼 -->
-      <a href="index.html#main-3" class="back-btn">← 메인으로 돌아가기</a>
-      
- <div class="image-wrapper">
-        <img src="images/work_G2.gif" alt="작품 A 결과물 이미지" class="artwork-img">
+      <div class="image-wrapper">
+        <div class="detail-slide-frame">
+          <img src="images/work_G2.jpg" alt="작품 G 슬라이드 1" class="detail-slide-img active">
+          <img src="images/work_G3.jpg" alt="작품 G 슬라이드 2" class="detail-slide-img">
+          <img src="images/work_G4.jpg" alt="작품 G 슬라이드 3" class="detail-slide-img">
+        </div>
       </div>
     </div>
 
-    <!-- 2. 우측 영역: A~I 퀵 버튼, 제목, 스크롤되는 설명, MP3 오디오 플레이어 -->
+    <!-- 2. 우측 영역: 상단 퀵 네비게이션 + 메인 돌아가기 버튼, 제목, 오디오 플레이어, 탭 컨텐츠 -->
     <div class="right-panel">
       
-      <!-- 상단 A~I 알파벳 퀵 이동 네비게이션 -->
+      <!-- 상단 1~9 네비게이션 & 원형 MAIN 돌아가기 버튼 -->
       <nav class="quick-nav">
-        <!-- 현재 보고 있는 페이지 버튼에 active 클래스를 부여합니다 -->
-        <a href="detail-1.html" class="nav-letter">1</a>
-        <a href="detail-2.html" class="nav-letter">2</a>
-        <a href="detail-3.html" class="nav-letter">3</a>
-        <a href="detail-4.html" class="nav-letter">4</a>
-        <a href="detail-5.html" class="nav-letter">5</a>
-        <a href="detail-6.html" class="nav-letter">6</a>
-        <a href="detail-7.html" class="nav-letter active">7</a>
-        <a href="detail-8.html" class="nav-letter">8</a>
-        <a href="detail-9.html" class="nav-letter">9</a>
+        <a href="index.html#main-3" class="nav-btn-main">← MAIN</a>
+        <div class="nav-letters">
+          <a href="detail-1.html" class="nav-letter">1</a>
+          <a href="detail-2.html" class="nav-letter">2</a>
+          <a href="detail-3.html" class="nav-letter">3</a>
+          <a href="detail-4.html" class="nav-letter">4</a>
+          <a href="detail-5.html" class="nav-letter">5</a>
+          <a href="detail-6.html" class="nav-letter">6</a>
+          <a href="detail-7.html" class="nav-letter active">7</a>
+          <a href="detail-8.html" class="nav-letter">8</a>
+          <a href="detail-9.html" class="nav-letter">9</a>
+        </div>
       </nav>
 
-      <!-- 스크롤되는 상세 컨텐츠 영역 -->
-      <div class="scroll-content">
+      <!-- 작품 서브 태그 & 제목 -->
+      <div class="header-block">
         <span class="category-tag">WORKSHOP RESULT</span>
-        <h1 class="artwork-title">제7구역: 평화 수립 계획</h1>
-        
-        <!-- 커스텀 MP3 음악 플레이어 -->
-          <div class="audio-player-box">
-          <audio id="audioPlayer" src="audio/music_G.mp3" preload="metadata"></audio>
+        <h1 class="artwork-title">제7구역: ㅁㅁ ㅌㄴㅇㅇㅌMars 5</h1>
 
-          <div class="player-controls">
-            <button id="playBtn" class="play-btn">▶</button>
-            <div class="time-display">
-              <span id="currentTime">00:00</span> / <span id="duration">00:00</span>
-            </div>
+        <!-- 2개 탭 버튼 (전략 회의 보고서를 첫 번째로 순서 변경) -->
+        <div class="tab-menu">
+          <button class="tab-btn active" data-tab="tab-1">전략 회의 보고서</button>
+          <button class="tab-btn" data-tab="tab-2">화성 수호의 노래</button>
+        </div>
+      </div>
+
+      <!-- 공통 오디오 플레이어 -->
+      <div class="audio-player-box">
+        <audio id="audioPlayer" src="audio/music_G.mp3" preload="metadata"></audio>
+        
+        <div class="player-controls">
+          <button id="playBtn" class="play-btn">▶</button>
+          <div class="time-display">
+            <span id="currentTime">00:00</span> / <span id="duration">00:00</span>
           </div>
-          <div class="progress-container" id="progressContainer">
-            <div class="progress-bar" id="progressBar"></div>
+        </div>
+        <div class="progress-container" id="progressContainer">
+          <div class="progress-bar" id="progressBar"></div>
+        </div>
+      </div>
+
+      <!-- 독립 스크롤 텍스트 컨텐츠 영역 -->
+      <div class="scroll-content">
+        
+        <!-- [첫 번째 탭 컨텐츠: 전략 회의 보고서] -->
+        <div id="tab-1" class="tab-content active">
+          <div class="text-block">
+            <h3 class="mid-title">지구인 분석 결과</h3>
+            <p class="description-text">
+             ● 지구인이 가져올 기술<br>
+1. 정보통신기술: 지구의 정보를 습득하기 위해 영상 통화, 영상 시청 <br>
+2. 농경술 : 다양한 영양소 섭취를 위해 필수<br><br>
+
+● 지구인의 약점 <br>
+1. 산소 필요<br>
+2. 에너지 필요, 다양한 영양분 섭취 필요<br>
+3. 화성에서는 슈트에 의존 (배터리 3일 사용가능)<br>
+4. 나르시시스트 성향에 의한 고립과 외로움<br>
+
+            </p>
+            
+            <hr class="section-divider">
+
+            <h3 class="mid-title">화성인으로서의 입장</h3>
+            <p class="description-text">
+             온건한 수용주의, 평화<br><br>
+
+인간의 기술력 및 군사력과 화성인이 과거에 화성을 탐사하러 온 인간을 말살한 전범을 종합적으로 고려하여, 인간에게 핵전쟁으로 황폐화된 지구 대신에 살아갈 공간을 제공하고, 그 대가로 과학기술들을 수용하기로 했습니다. 지구인과 화성인은 화성의 깨끗한 자연환경을 최대한 유지하는 방향으로 공존합니다. 
+
+            </p>
+
+            <hr class="section-divider">
+
+            <h3 class="mid-title">전략명: 평화 수립 계획</h3>
+            <p class="description-text">
+             인간의 강대한 기술력과 군사력을 감당히기엔 화성인이 너무 약하다고 판단되어 화성의 자연환경을 최대한 보존하는 방향으로 개발하는 조건에 따라 지구의 과학기술을 수용하면서 화성의 자연환경을 지키는 수교를 맺기로 했습니다. 지구에서는 화성을 정복하자는 목소리와 수교하자는 두 가지 의견이 나왔지만 적극적으로 수교를 주장한 끝에 평화적인 수교를 성공적으로 맺어 인간과의 공존에 성공하였습니다. 
+<br>
+화성은 지구와 어느 정도 비슷한 모양새를 갖게 되었습니다. 집과 푸른 모습이 아름답게 보입니다. 더 이상의 갈등은 없습니다.
+<br><br>
+            </p>
           </div>
         </div>
 
-        <!-- 긴 텍스트 설명 내용 -->
-        <div class="description-text">
-          <p>
-red ground 피어난 red flower no pain no war<br>
+        <!-- [두 번째 탭 컨텐츠: 화성 수호의 노래] -->
+        <div id="tab-2" class="tab-content">
+          <div class="text-block">
+            <h3 class="mid-title">곡 제목: Coexistence of Peace(공존)</h3>
+            <p class="lyrics-text">
+              red ground 피어난 red flower no pain no war<br>
 우리는 평화를 노래해 peace peace mars peace!<br>
 폐허로 변한 이 유토피아에 평화에 씨앗을 뿌려<br>
 황폐해진 이 공기 속에 생명을 불어넣어<br>
@@ -74,68 +128,48 @@ Coexistence of peace 에이이이~~ yo!<br>
 빛을 잃었던 하늘 위로<br>
 새로운 내일이 번져가<br>
 손을 맞잡아 하나 되어<br>
-희망의 노래를 불러가
+희망의 노래를 불러가<br><br>
 
-          </p>
-          <p>
+
 No more tears, no more cries<br>
 We can see the sunrise<br>
 너와 내가 함께라면<br>
-끝없는 내일을 만들어
-          </p>
-          <p>
+끝없는 내일을 만들어<br><br>
+
+
 공존 공존 coexistence<br>
 We stand together hand in hand<br>
 Love and hope forever shine<br>
-We will never fade away
+We will never fade away<br><br>
 
-          </p>
-          <p>
+
 Red ground, blooming red flower<br>
 No pain, no war<br>
 우리는 평화를 노래해<br>
-Peace, peace, Mars, peace!
+Peace, peace, Mars, peace!<br><br>
 
-          </p>
-          <p>
+
 넘어진 꿈을 다시 세워<br>
 메마른 땅에 꽃을 피워<br>
 저 별 너머 미래까지<br>
-우리의 마음을 이어가
+우리의 마음을 이어가<br><br>
 
-          </p>
-          <p>
+
 We are blooming<br>
 Into the brighter sky<br>
 영원히 함께 노래해<br>
-Coexistence of peace!
-          </p>
-          <p>
-Oh oh oh<br>
-Peace for you<br>
-Peace for me<br>
-Peace for everyone
-
-          </p>
-          <p>
-Coexistence of peace<br>
-에이이이~~ Yo!<br>
-We're together, side by side<br>
-Forever we will rise<br>
-공존하는 세상 속에<br>
-새로운 희망이 피어나<br>
-Coexistence of peace!
-
+Coexistence of peace!<br><br>
           </p>
 
+          </div>
         </div>
 
       </div>
 
     </div>
 
-  </div>
+</div>
 
-  <script src="detail-script.js"></script>
+<script src="detail-script.js"></script>
 </body>
 </html>

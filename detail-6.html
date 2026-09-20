@@ -8,83 +8,142 @@
 </head>
 <body>
 
-  <div class="detail-container">
+<div class="detail-container">
     
-    <!-- 1. 좌측 영역: 작품 이미지 & 돌아가기 버튼 -->
+    <!-- 1. 좌측 영역: 3장 이미지 자동 슬라이더 -->
     <div class="left-panel">
-      <!-- 메인페이지 3(Workshop 그리드)으로 돌아가는 버튼 -->
-      <a href="index.html#main-3" class="back-btn">← 메인으로 돌아가기</a>
-      
- <div class="image-wrapper">
-        <img src="images/work_F2.gif" alt="작품 A 결과물 이미지" class="artwork-img">
+      <div class="image-wrapper">
+        <div class="detail-slide-frame">
+          <img src="images/work_F2.jpg" alt="작품 F 슬라이드 1" class="detail-slide-img active">
+          <img src="images/work_F3.jpg" alt="작품 F 슬라이드 2" class="detail-slide-img">
+          <img src="images/work_F4.jpg" alt="작품 F 슬라이드 3" class="detail-slide-img">
+        </div>
       </div>
     </div>
 
-    <!-- 2. 우측 영역: A~I 퀵 버튼, 제목, 스크롤되는 설명, MP3 오디오 플레이어 -->
+    <!-- 2. 우측 영역: 상단 퀵 네비게이션 + 메인 돌아가기 버튼, 제목, 오디오 플레이어, 탭 컨텐츠 -->
     <div class="right-panel">
       
-      <!-- 상단 A~I 알파벳 퀵 이동 네비게이션 -->
+      <!-- 상단 1~9 네비게이션 & 원형 MAIN 돌아가기 버튼 -->
       <nav class="quick-nav">
-        <!-- 현재 보고 있는 페이지 버튼에 active 클래스를 부여합니다 -->
-        <a href="detail-1.html" class="nav-letter">1</a>
-        <a href="detail-2.html" class="nav-letter">2</a>
-        <a href="detail-3.html" class="nav-letter">3</a>
-        <a href="detail-4.html" class="nav-letter">4</a>
-        <a href="detail-5.html" class="nav-letter">5</a>
-        <a href="detail-6.html" class="nav-letter active">6</a>
-        <a href="detail-7.html" class="nav-letter">7</a>
-        <a href="detail-8.html" class="nav-letter">8</a>
-        <a href="detail-9.html" class="nav-letter">9</a>
+        <a href="index.html#main-3" class="nav-btn-main">← MAIN</a>
+        <div class="nav-letters">
+          <a href="detail-1.html" class="nav-letter">1</a>
+          <a href="detail-2.html" class="nav-letter">2</a>
+          <a href="detail-3.html" class="nav-letter">3</a>
+          <a href="detail-4.html" class="nav-letter">4</a>
+          <a href="detail-5.html" class="nav-letter">5</a>
+          <a href="detail-6.html" class="nav-letter active">6</a>
+          <a href="detail-7.html" class="nav-letter">7</a>
+          <a href="detail-8.html" class="nav-letter">8</a>
+          <a href="detail-9.html" class="nav-letter">9</a>
+        </div>
       </nav>
 
-      <!-- 스크롤되는 상세 컨텐츠 영역 -->
-      <div class="scroll-content">
+      <!-- 작품 서브 태그 & 제목 -->
+      <div class="header-block">
         <span class="category-tag">WORKSHOP RESULT</span>
         <h1 class="artwork-title">제6구역: 붉은 6구역의 행진</h1>
-        
-        <!-- 커스텀 MP3 음악 플레이어 -->
-          <div class="audio-player-box">
-          <audio id="audioPlayer" src="audio/music_F.mp3" preload="metadata"></audio>
 
-          <div class="player-controls">
-            <button id="playBtn" class="play-btn">▶</button>
-            <div class="time-display">
-              <span id="currentTime">00:00</span> / <span id="duration">00:00</span>
-            </div>
+        <!-- 2개 탭 버튼 (전략 회의 보고서를 첫 번째로 순서 변경) -->
+        <div class="tab-menu">
+          <button class="tab-btn active" data-tab="tab-1">전략 회의 보고서</button>
+          <button class="tab-btn" data-tab="tab-2">화성 수호의 노래</button>
+        </div>
+      </div>
+
+      <!-- 공통 오디오 플레이어 -->
+      <div class="audio-player-box">
+        <audio id="audioPlayer" src="audio/music_F.mp3" preload="metadata"></audio>
+        
+        <div class="player-controls">
+          <button id="playBtn" class="play-btn">▶</button>
+          <div class="time-display">
+            <span id="currentTime">00:00</span> / <span id="duration">00:00</span>
           </div>
-          <div class="progress-container" id="progressContainer">
-            <div class="progress-bar" id="progressBar"></div>
+        </div>
+        <div class="progress-container" id="progressContainer">
+          <div class="progress-bar" id="progressBar"></div>
+        </div>
+      </div>
+
+      <!-- 독립 스크롤 텍스트 컨텐츠 영역 -->
+      <div class="scroll-content">
+        
+        <!-- [첫 번째 탭 컨텐츠: 전략 회의 보고서] -->
+        <div id="tab-1" class="tab-content active">
+          <div class="text-block">
+            <h3 class="mid-title">지구인 분석 결과</h3>
+            <p class="description-text">
+              1. 생물학적 약점 <br>
+              2. 정신적 약점(거짓 정보를 파악하지 못한다.)<br>
+              3. 정서적 약점 <br>
+              4. 귀여움에 약하다 (e.g. 헤일메리 로키, 만달로리안 그로구)<br>
+              5. AI 에 대한 과도한 의존<br>
+<br>
+귀여움과 정신감응의 능력으로 인간들의 정신을 공격하자!<br>
+* 정신감응 능력은 인간뿐만 아니라 AI에게도 적용될 것으로 예상<br><br>
+
+● 방안 <br>
+- 조직을 와해<br>
+- 개인의 심리 붕괴<br>
+ → AI에 대한 인간의 의존성을 고려해, 이를 화성인의 정서 능력을 통한 바이오 디지털 해킹(지구 해킹을 역으로 진행)
+<br>
+            </p>
+            
+            <hr class="section-divider">
+
+            <h3 class="mid-title">화성인으로서의 입장</h3>
+            <p class="description-text">
+              지구인의 기술(A.I)을 역으로 무기화해서, 화성인 문화권에는 진입할 수 없는 존재로 여긴다.
+            <hr class="section-divider">
+
+            <h3 class="mid-title">전략명: 정신 교란 및 매복</h3>
+            <p class="description-text">
+              지형 분석을 통해 지구인들에 대한 대응 방안 구상. 지구인들의 착륙 위치를 예상하고 분석하여, 매복하는 방향으로 구성
+<br><br>
+1. 착륙 예상 위치: 우측 하단, 모래 평야가 있어서 평평해 마을에 접근하기가 유리하며, 운하가 있어서 수자원 접근 용이
+<br>
+2. 대응 방안: 지형을 이용한 매복위치 지정 및 정신 교란 공격을 위한 인프라 시설 구축(중계탑 등)
+<br><br>
+- 숲을 설치하여 지구인들의 착륙 위치를 유도<br>
+- 화성인들은 매복하여 착륙한 지구인들 급습<br>
+- 십자가, 부서진 노트북 등의 심볼들을 설치하여, 인간들의 사기를 저하<br><br>
+
+            </p>
           </div>
         </div>
 
-        <!-- 긴 텍스트 설명 내용 -->
-        <div class="description-text">
-          <p>
-깨진 화면 위로 바람이 불고<br>
+        <!-- [두 번째 탭 컨텐츠: 화성 수호의 노래] -->
+        <div id="tab-2" class="tab-content">
+          <div class="text-block">
+            <h3 class="mid-title">곡 제목: 붉은 6구역의 행진</h3>
+            <p class="lyrics-text">
+              깨진 화면 위로 바람이 불고<br>
 검은 십자가엔 밤이 내린다<br>
 6구역이여, 우리의 요새여<br>
-화성의 승리는 영원하리라
-          </p>
-          <p>
+화성의 승리는 영원하리라<br><br>
+          
 가라, 화성의 형제들이여<br>
 붉은 별 아래 대열을 세워라<br>
 숲은 침묵하고 탑은 노래하리<br>
-침입자의 마음은 어둠에 잠기리라
-          </p>
-          <p>
+침입자의 마음은 어둠에 잠기리라<br><br>
+          
 깨진 화면 위로 바람이 불고<br>
 검은 십자가엔 밤이 내린다<br>
 6구역이여, 우리의 요새여<br>
-화성의 승리는 영원하리라
+화성의 승리는 영원하리라<br><br>
           </p>
+
+          </div>
         </div>
 
       </div>
 
     </div>
 
-  </div>
+</div>
 
-  <script src="detail-script.js"></script>
+<script src="detail-script.js"></script>
 </body>
 </html>
