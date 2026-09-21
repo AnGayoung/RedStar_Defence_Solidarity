@@ -290,10 +290,43 @@ body {
   margin: 12px 0;
 }
 
-/* 모바일 반응형 분기 */
+/* ================= 4. 모바일 반응형 완벽 최적화 ================= */
 @media (max-width: 900px) {
   .detail-container {
     grid-template-columns: 1fr;
     height: auto;
+  }
+
+  /* 상단 네비게이션 헤더 간격 정돈 */
+  .quick-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 4px; /* MAIN 버튼과 숫자 버튼 사이 여백 축소 */
+    margin-bottom: 16px;
+  }
+
+  /* MAIN 버튼 모바일 크기 축소 */
+  .nav-btn-main {
+    height: 26px;
+    padding: 0 10px;
+    font-size: 0.72rem;
+    border-radius: 13px;
+    flex-shrink: 0;
+  }
+
+  /* 1~9 숫자 버튼 그룹 간격 축소 */
+  .nav-letters {
+    display: flex;
+    gap: 3px; /* 버튼 사이 여백 축소 */
+    flex-wrap: nowrap; /* 줄바꿈 방지 */
+  }
+
+  /* 1~9 원형 버튼 모바일 크기 축소 (9번까지 안 잘리고 한 줄 노출) */
+  .nav-letter {
+    width: 25px;
+    height: 25px;
+    font-size: 0.75rem;
+    flex-shrink: 0;
   }
 }
