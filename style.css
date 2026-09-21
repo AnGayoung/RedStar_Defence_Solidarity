@@ -85,7 +85,7 @@ body {
   align-items: center;
 }
 
-/* 화면을 그래픽적으로 꽉 채우는 텍스트 프레임 레이어 */
+/* 화면을 그래픽적으로 꽉 채우는 텍스트 프레임 레이어 (z-index: 1) */
 .text-layer-bottom {
   position: absolute;
   top: 50%;
@@ -118,7 +118,7 @@ body {
   text-shadow: 0 0 30px rgba(255, 77, 77, 0.25);
   display: inline-block;
   
-  /* 등장 애니메이션 초기 상태 (숨김) */
+  /* 등장 애니메이션 초기 상태 */
   opacity: 0;
   transform: translateY(50px);
   transition: opacity 0.8s ease-out, transform 0.8s ease-out;
@@ -159,26 +159,27 @@ body {
   transition-delay: 0.85s;
 }
 
-/* 윗층 3D GIF 오브젝트 (1.1초 마지막 등장) */
+/* 윗층 3D GIF 오브젝트 (글씨 레이어보다 앞층에 위치: z-index: 2) */
 .object-layer-top {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 2;
+  z-index: 2; /* 글자(z-index: 1)보다 위에 배치하여 중앙에 겹쳐지도록 설정 */
   pointer-events: none;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+/* GIF 이미지 2배 확대 (최대 950px/75vw 크기) */
 .mars-gif {
-  width: 38vw;
-  max-width: 500px;
-  min-width: 280px;
+  width: 75vw;
+  max-width: 950px;
+  min-width: 380px;
   height: auto;
   display: block;
-  filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.7));
+  filter: drop-shadow(0 25px 40px rgba(0, 0, 0, 0.8)) drop-shadow(0 0 50px rgba(255, 77, 77, 0.3));
 }
 
 .fade-in-target .object-layer-top {
@@ -353,16 +354,25 @@ body {
     font-size: 0.85rem;
   }
 
+  /* 모바일에서 글자와 GIF 오브젝트 간격 좁히기 */
+  .text-layer-bottom {
+    height: auto;               /* 기존 80vh 고정을 해제하여 텍스트 상자 높이를 자연스럽게 줄임 */
+    justify-content: center;    /* 윗줄과 아랫줄을 중앙으로 모음 */
+    gap: 180px;                 /* 윗줄('붉은 별')과 아랫줄('수호 연대') 사이 간격 (원하는 만큼 수치 조절 가능) */
+  }
+
   .word {
-    font-size: clamp(2.5rem, 15vw, 5.5rem);
+    font-size: clamp(2.5rem, 14vw, 5.5rem);
   }
 
   .word-space {
     width: 1.5vw;
   }
 
+  /* 모바일 화면에 맞춘 GIF 이미지 크기 */
   .mars-gif {
-    width: 60vw;
+    width: 85vw;
+    max-width: 450px;
   }
 
   .info-container {
