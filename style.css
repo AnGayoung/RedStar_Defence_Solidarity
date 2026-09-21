@@ -49,24 +49,29 @@ body {
   border-color: #ffffff;
 }
 
-/* ================= 2. 풀스크린 스크롤 스냅 ================= */
+/* ================= 2. 풀스크린 스크롤 스냅 (모바일 최적화 보완) ================= */
 .scroll-container {
   height: 100vh;
+  height: 100dvh; /* iOS dynamic viewport height 적용 */
   overflow-y: scroll;
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch; /* iOS 터치 관성 스크롤 및 스냅 안정화 */
 }
 
 .section {
   height: 100vh;
+  height: 100dvh; /* 모바일 주소창 가변 높이에 반응해 일정한 높이 유지 */
   width: 100%;
   scroll-snap-align: start;
+  scroll-snap-stop: always; /* 스크롤할 때 섹션을 건너뛰지 않고 무조건 멈춤 */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   position: relative;
   padding: 0 20px;
+  box-sizing: border-box;
 }
 
 /* ================= 3. 메인페이지 1: 풀화면 대형 텍스트 & 순차 등장 ================= */
@@ -343,49 +348,88 @@ body {
   transform: translateY(0);
 }
 
-/* ================= 7. 모바일 반응형 분기 ================= */
+/* ================= 7. 모바일 반응형 분기 (다양한 기기 및 아이폰 최적화) ================= */
 @media (max-width: 980px) {
+  /* 네비게이션 헤더 모바일 상단 위치 고정 */
+  .navbar {
+    top: 15px;
+  }
+
   .nav-buttons {
-    gap: 10px;
+    gap: 8px;
   }
 
   .nav-btn {
-    padding: 8px 16px;
-    font-size: 0.85rem;
+    padding: 6px 14px;
+    font-size: 0.8rem;
   }
 
-  /* 모바일에서 글자와 GIF 오브젝트 간격 좁히기 */
+  /* main-1: 모바일 높이에 맞춘 대형 글자 및 3D GIF 간격 밀도 조정 */
   .text-layer-bottom {
-    height: auto;               /* 기존 80vh 고정을 해제하여 텍스트 상자 높이를 자연스럽게 줄임 */
-    justify-content: center;    /* 윗줄과 아랫줄을 중앙으로 모음 */
-    gap: 180px;                 /* 윗줄('붉은 별')과 아랫줄('수호 연대') 사이 간격 (원하는 만큼 수치 조절 가능) */
+    height: auto;
+    justify-content: center;
+    gap: 220px; /* 모바일 화면 크기에 적합한 위아래 줄 간격 */
   }
 
   .word {
-    font-size: clamp(2.5rem, 14vw, 5.5rem);
+    font-size: clamp(2.2rem, 13vw, 4.5rem);
   }
 
   .word-space {
     width: 1.5vw;
   }
 
-  /* 모바일 화면에 맞춘 GIF 이미지 크기 */
+  /* main-1 3D GIF 모바일 맞춤 크기 */
   .mars-gif {
-    width: 85vw;
-    max-width: 450px;
+    width: 80vw;
+    max-width: 360px;
   }
 
+  /* main-2: INFO 모바일 스크린 가득 채우기 레벨 레이아웃 */
   .info-container {
     grid-template-columns: 1fr;
-    gap: 30px;
+    gap: 16px;
+    max-height: 80dvh; /* 화면을 넘치지 않도록 최대 높이 제한 */
+    overflow-y: auto;  /* 내용이 넘쳐도 메인 스크롤이 깨지지 않게 내부에 스크롤 생성 */
+  }
+
+  .slide-frame {
+    aspect-ratio: 16 / 9; /* 모바일에서 이미지가 상하 공간을 너무 많이 차지하지 않게 비율 조정 */
+  }
+
+  .info-text-box {
+    gap: 8px;
+  }
+
+  .info-text-box h2 {
+    font-size: 1.3rem;
+  }
+
+  .info-description {
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+
+  .info-date {
+    font-size: 0.8rem;
+    margin-top: 4px;
+  }
+
+  /* main-3: WORKSHOP 그리드 3x3 모바일 화면 한눈에 보이도록 축소 */
+  .workshop-container {
+    gap: 16px;
+  }
+
+  .workshop-title {
+    font-size: 1.1rem;
   }
 
   .grid-3x3 {
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: auto;
-    width: 100%;
-    max-width: 500px;
-    gap: 8px;
+    grid-template-rows: repeat(3, 1fr);
+    width: 88vw;
+    max-width: 360px;
+    gap: 6px;
   }
 
   .grid-item {
